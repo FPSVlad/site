@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        /* Общее центрирование для всего контента */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;  /* Центрируем по горизонтали */
+            justify-content: center;  /* Центрируем по вертикали */
+            height: 100vh;  /* Занимаем всю высоту экрана */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Добавление стилей для кнопок */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;  /* Цвет фона кнопки */
+            color: white;
+            text-align: center;
+            text-decoration: none;  /* Убираем подчеркивание */
+            border-radius: 5px;  /* Скругляем углы */
+            transition: background-color 0.3s ease;  /* Плавное изменение цвета */
+            margin: 10px 0;  /* Отступы между кнопками */
+        }
+
+        .btn:hover {
+            background-color: #45a049;  /* Цвет кнопки при наведении */
+        }
+
+        /* Стили для списка тем */
+        ul {
+            list-style-type: none;  /* Убираем стандартные маркеры списка */
+            padding: 0;
+        }
+
+        li {
+            margin: 15px 0;  /* Отступы между элементами списка */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать на новости Обоссляндии!</h1>
+    <h2>Список тем:</h2>
+    <ul>
+        {% for topic in topics %}
+            <li><a class="btn" href="{% url 'topic_detail' pk=topic.pk %}">{{ topic.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

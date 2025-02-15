@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add News</title>
+    <!-- Подключаем CKEditor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.0/classic/ckeditor.js"></script>
+</head>
+<body>
+    <h1>Добавить новость</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить новость</button>
+    </form>
+
+    <script>
+        // Инициализация CKEditor для поля контента
+        ClassicEditor
+            .create(document.querySelector('#id_content'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* Устанавливаем задний фон для страниц */
+body {
+    background: url('{% static "images/background.jpg" %}') no-repeat center center fixed;
+    background-size: cover; /* Растягиваем фон по размеру окна */
+    background-attachment: fixed; /* Закрепляем фон при прокрутке */
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Обеспечиваем, чтобы фон занимал всю высоту окна */
+}
+
+/* Делаем текст белым */
+div, th, td, h1, h2, h3, h4, h5, h6, p, a, span, label {
+    color: white !important;
+}
+
+/* Кастомизация кнопок */
+input[type=submit], button, .button {
+    color: black !important;
+    background-color: #f0f0f0 !important;
+}

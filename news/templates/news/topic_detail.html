@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости по теме: {{ topic.name }}</title>
+    <style>
+        /* Общее центрирование для всего контента */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;  /* Центрируем по горизонтали */
+            justify-content: center;  /* Центрируем по вертикали */
+            height: 100vh;  /* Занимаем всю высоту экрана */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Стили для кнопок */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Стили для новостей */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 80%;  /* Уменьшаем ширину списка */
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin: 15px 0;
+            text-align: left;  /* Выравниваем текст слева в новостях */
+        }
+
+        h4 {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Новости по теме: {{ topic.name }}</h1>
+    
+    {% if news %}
+        <ul>
+            {% for news_item in news %}
+                <li>
+                    <h4>{{ news_item.title }}</h4>
+                    <p>{{ news_item.content|safe }}</p>  <!-- Применяем фильтр safe -->
+                    <p><strong>Дата публикации:</strong> {{ news_item.created_at }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет новостей в этой теме.</p>
+    {% endif %}
+    
+    <a class="btn" href="{% url 'home' %}">Вернуться на главную</a> <!-- Кнопка для возврата на главную -->
+</body>
+</html>
+
